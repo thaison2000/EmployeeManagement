@@ -1,0 +1,7 @@
+todos.db*
+employees.db*
+**/bin/
+**/obj/
+/publish/
+.vs/
+*.csproj.user

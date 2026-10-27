@@ -1,0 +1,79 @@
+@EmployeeManagement_HostAddress = http://localhost:5116
+
+### Create a department
+POST {{EmployeeManagement_HostAddress}}/api/departments
+Content-Type: application/json
+
+{
+  "name": "Engineering"
+}
+
+###
+
+### List departments
+GET {{EmployeeManagement_HostAddress}}/api/departments
+Accept: application/json
+
+###
+
+### Update a department
+PUT {{EmployeeManagement_HostAddress}}/api/departments/1
+Content-Type: application/json
+
+{
+  "name": "Product Engineering"
+}
+
+###
+
+### List employees
+GET {{EmployeeManagement_HostAddress}}/api/employees
+Accept: application/json
+
+###
+
+### List employees in a department
+GET {{EmployeeManagement_HostAddress}}/api/employees?departmentId=1
+Accept: application/json
+
+###
+
+### Create an employee
+POST {{EmployeeManagement_HostAddress}}/api/employees
+Content-Type: application/json
+
+{
+  "name": "Nguyen Van An",
+  "phone": "0901234567",
+  "position": "Developer",
+  "departmentId": 1
+}
+
+###
+
+### Update an employee
+PUT {{EmployeeManagement_HostAddress}}/api/employees/1
+Content-Type: application/json
+
+{
+  "name": "Nguyen Van An",
+  "phone": "0901234567",
+  "position": "Senior Developer",
+  "departmentId": 1
+}
+
+###
+
+### Get an employee
+GET {{EmployeeManagement_HostAddress}}/api/employees/1
+Accept: application/json
+
+###
+
+### Delete an employee
+DELETE {{EmployeeManagement_HostAddress}}/api/employees/1
+
+###
+
+### Delete a department (expected 409 if it still has employees)
+DELETE {{EmployeeManagement_HostAddress}}/api/departments/1

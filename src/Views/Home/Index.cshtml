@@ -1,0 +1,84 @@
+@{
+    ViewData["Title"] = "Quản lý nhân viên";
+}
+
+<main class="app-shell">
+    <header class="app-header">
+        <h1>Quản lý nhân sự</h1>
+    </header>
+
+    <div id="feedback" class="alert d-none" role="status" aria-live="polite"></div>
+
+    <section class="workspace">
+        <aside class="management-panel department-panel">
+            <h2 class="panel-title">Phòng ban</h2>
+            <form id="department-form" class="department-form">
+                <label class="visually-hidden" for="department-name">Tên phòng ban</label>
+                <input id="department-name" class="form-control" type="text"
+                       maxlength="100" placeholder="Tên phòng ban mới" required>
+                <button class="btn btn-primary" type="submit" aria-label="Thêm phòng ban">+</button>
+            </form>
+            <ul id="department-list" class="department-list"></ul>
+        </aside>
+
+        <section class="management-panel employee-panel">
+            <div class="panel-tools">
+                <h2 class="panel-title">Nhân viên</h2>
+                <select id="department-filter" class="form-select form-select-sm department-filter"
+                        aria-label="Lọc theo phòng ban">
+                    <option value="">Tất cả phòng ban</option>
+                </select>
+                <div class="employee-counter" aria-live="polite">
+                    <span class="counter-number" id="employee-count">—</span>
+                    <span class="counter-label">nhân viên</span>
+                </div>
+            </div>
+
+            <form id="employee-form" class="employee-form">
+                <input id="employee-id" type="hidden">
+                <div>
+                    <label class="visually-hidden" for="employee-name">Họ tên</label>
+                    <input id="employee-name" class="form-control" type="text"
+                           maxlength="150" placeholder="Họ tên" required>
+                </div>
+                <div>
+                    <label class="visually-hidden" for="employee-phone">Số điện thoại</label>
+                    <input id="employee-phone" class="form-control" type="tel"
+                           maxlength="30" placeholder="Số điện thoại" required>
+                </div>
+                <div>
+                    <label class="visually-hidden" for="employee-position">Chức vụ</label>
+                    <input id="employee-position" class="form-control" type="text"
+                           maxlength="100" placeholder="Chức vụ" required>
+                </div>
+                <div>
+                    <label class="visually-hidden" for="employee-department">Phòng ban</label>
+                    <select id="employee-department" class="form-select" required></select>
+                </div>
+                <div class="employee-form-actions">
+                    <h3 id="employee-form-title">Thêm nhân viên</h3>
+                    <div class="d-flex gap-2">
+                        <button class="btn btn-primary" type="submit">Lưu</button>
+                        <button id="cancel-edit" class="btn btn-light d-none" type="button">Hủy</button>
+                    </div>
+                </div>
+            </form>
+
+            <div class="employee-table-wrap">
+                <table class="table employee-table align-middle">
+                    <thead>
+                        <tr><th>Họ tên</th><th>Điện thoại</th><th>Chức vụ</th><th>Phòng ban</th><th></th></tr>
+                    </thead>
+                    <tbody id="employee-list"></tbody>
+                </table>
+                <p id="empty-state" class="empty-state text-secondary text-center d-none">
+                    Chưa có nhân viên nào.
+                </p>
+            </div>
+        </section>
+    </section>
+</main>
+
+@section Scripts {
+    <script src="~/js/employees.js" asp-append-version="true"></script>
+}
